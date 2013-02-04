@@ -116,7 +116,7 @@ actor systems has to have a JAR containing the class.
 
 .. note::
 
-  In order to ensure serializability of ``Props`` when passing constructor
+  In order to ensure stabilizability of ``Props`` when passing constructor
   arguments to the actor being created, do not make the factory a non-static
   inner class: this will inherently capture a reference to its enclosing
   object, which in most cases is not serializable. It is best to make a static
@@ -429,14 +429,13 @@ SSL
 SSL can be used for the remote transport by activating the ``akka.remote.netty.ssl``
 configuration section. See description of the settings in the :ref:`remoting-java-configuration`.
 
-The SSL support is implemented with Java Secure Socket Extension, please consult the offical 
+The SSL support is implemented with Java Secure Socket Extension, please consult the official
 `Java Secure Socket Extension documentation <http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html>`_
 and related resources for troubleshooting.
-  
+
 .. note::
 
-  When using SHA1PRNG on Linux it's recommended specify ``-Djava.security.egd=file:/dev/./urandom`` as argument 
+  When using SHA1PRNG on Linux it's recommended specify ``-Djava.security.egd=file:/dev/./urandom`` as argument
   to the JVM to prevent blocking. It is NOT as secure because it reuses the seed.
-  Use '/dev/./urandom', not '/dev/urandom' as that doesn't work according to 
+  Use '/dev/./urandom', not '/dev/urandom' as that doesn't work according to
   `Bug ID: 6202721 <http://bugs.sun.com/view_bug.do?bug_id=6202721>`_.
-  

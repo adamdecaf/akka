@@ -180,7 +180,7 @@ body.
 
 .. _camel-acknowledgements-java:
 
-Delivery acknowledgements
+Delivery acknowledgments
 -------------------------
 
 With in-out message exchanges, clients usually know that a message exchange is
@@ -195,8 +195,8 @@ to the endpoint in this case. To allow consumer actors to positively or
 negatively acknowledge the receipt of a message from an in-only message
 exchange, they need to override the ``autoAck`` method to return false.
 In this case, consumer actors must reply either with a
-special akka.camel.Ack message (positive acknowledgement) or a akka.actor.Status.Failure (negative
-acknowledgement).
+special akka.camel.Ack message (positive acknowledgment) or a akka.actor.Status.Failure (negative
+acknowledgment).
 
 .. includecode:: code/docs/camel/Consumer3.java#Consumer3
 

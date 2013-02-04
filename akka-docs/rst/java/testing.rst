@@ -62,7 +62,7 @@ restriction is an impediment to unit testing, which led to the inception of the
 :class:`TestActorRef`. This special type of reference is designed specifically
 for test purposes and allows access to the actor in two ways: either by
 obtaining a reference to the underlying actor instance, or by invoking or
-querying the actor's behaviour (:meth:`receive`). Each one warrants its own
+querying the actor's behavior (:meth:`receive`). Each one warrants its own
 section below.
 
 Obtaining a Reference to an :class:`Actor`
@@ -215,14 +215,14 @@ obey the innermost enclosing :class:`Within` as detailed :ref:`below
     An object which is an instance of the given :class:`Class` must be received
     within the allotted time frame; the object will be returned. Note that this
     does a conformance check, if you need the class to be equal you need to
-    verify that afterwards.
+    verify that afterwords.
 
   * :meth:`public <T> T expectMsgAnyClassOf(Duration max, Class<? extends T>... c)`
 
     An object must be received within the given time, and it must be an
     instance of at least one of the supplied :class:`Class` objects; the
     received object will be returned. Note that this does a conformance check,
-    if you need the class to be equal you need to verify that afterwards.
+    if you need the class to be equal you need to verify that afterwords.
 
     .. note::
 
@@ -621,5 +621,3 @@ full logging of actor activities using this configuration fragment::
       }
     }
   }
-
-

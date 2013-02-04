@@ -5,7 +5,7 @@ Fault Tolerance (Java)
 
 As explained in :ref:`actor-systems` each actor is the supervisor of its
 children, and as such each actor defines fault handling supervisor strategy.
-This strategy cannot be changed afterwards as it is an integral part of the
+This strategy cannot be changed afterwords as it is an integral part of the
 actor system’s structure.
 
 Fault Handling in Practice
@@ -83,7 +83,7 @@ Test Application
 ----------------
 
 The following section shows the effects of the different directives in practice,
-wherefor a test setup is needed. First off, we need a suitable supervisor:
+where for a test setup is needed. First off, we need a suitable supervisor:
 
 .. includecode:: code/docs/actor/FaultHandlingTestBase.java
    :include: supervisor
@@ -148,4 +148,3 @@ the last test:
 
 .. includecode:: code/docs/actor/FaultHandlingTestBase.java
    :include: escalate-restart
-

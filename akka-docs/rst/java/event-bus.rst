@@ -204,4 +204,3 @@ Other Uses
 The event stream is always there and ready to be used, just publish your own
 events (it accepts ``Object``) and subscribe listeners to the corresponding JVM
 classes.
-

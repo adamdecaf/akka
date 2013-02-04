@@ -14,7 +14,7 @@ Details on how to make that happens are below, in the "Loading from Configuratio
 
 .. warning::
 
-    Since an extension is a way to hook into Akka itself, the implementor of the extension needs to
+    Since an extension is a way to hook into Akka itself, the implementer of the extension needs to
     ensure the thread safety of his/her extension.
 
 
@@ -93,4 +93,3 @@ Use it:
 
 .. includecode:: code/docs/extension/SettingsExtensionDocTestBase.java
    :include: extension-usage-actor
-
