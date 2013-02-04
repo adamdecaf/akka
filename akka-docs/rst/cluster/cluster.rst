@@ -85,7 +85,7 @@ The cluster membership used in Akka is based on Amazon's `Dynamo`_ system and
 particularly the approach taken in Basho's' `Riak`_ distributed database.
 Cluster membership is communicated using a `Gossip Protocol`_, where the current
 state of the cluster is gossiped randomly through the cluster, with preference to
-members that have not seen the latest version. Joining a cluster is initiated 
+members that have not seen the latest version. Joining a cluster is initiated
 by issuing a ``Join`` command to one of the nodes in the cluster to join.
 
 .. _Gossip Protocol: http://en.wikipedia.org/wiki/Gossip_protocol
@@ -116,7 +116,7 @@ Gossip Convergence
 ^^^^^^^^^^^^^^^^^^
 
 Information about the cluster converges at certain points of time. This is when
-all nodes have seen the same cluster state. Convergence is recognised by passing
+all nodes have seen the same cluster state. Convergence is recognized by passing
 a map from node to current state version during gossip. This information is
 referred to as the gossip overview. When all versions in the overview are equal
 there is convergence. Gossip convergence cannot occur while any nodes are
@@ -157,7 +157,7 @@ Leader
 ^^^^^^
 
 After gossip convergence a ``leader`` for the cluster can be determined. There is no
-``leader`` election process, the ``leader`` can always be recognised deterministically
+``leader`` election process, the ``leader`` can always be recognized deterministically
 by any node whenever there is gossip convergence. The ``leader`` is simply the first
 node in sorted order that is able to take the leadership role, where the only
 allowed member states for a ``leader`` are ``up``, ``leaving`` or ``exiting`` (see
@@ -172,7 +172,7 @@ cluster by specifying migrations, or to rebalance the cluster automatically
 based on metrics from member nodes. Metrics may be spread using the gossip
 protocol or possibly more efficiently using a *random chord* method, where the
 ``leader`` contacts several random nodes around the cluster ring and each contacted
-node gathers information from their immediate neighbours, giving a random
+node gathers information from their immediate neighbors, giving a random
 sampling of load information.
 
 The ``leader`` also has the power, if configured so, to "auto-down" a node that
@@ -184,7 +184,7 @@ Seed Nodes
 ^^^^^^^^^^
 
 The seed nodes are configured contact points for inital join of the cluster.
-When a new node is started started it sends a message to all seed nodes and 
+When a new node is started started it sends a message to all seed nodes and
 then sends join command to the one that answers first.
 
 It is possible to turn off automatic join.
@@ -214,8 +214,8 @@ list of unreachable nodes.
 The nodes defined as ``seed`` nodes are just regular member nodes whose only
 "special role" is to function as contact points in the cluster.
 
-During each round of gossip exchange it sends Gossip to random node with 
-newer or older state information, if any, based on the current gossip overview, 
+During each round of gossip exchange it sends Gossip to random node with
+newer or older state information, if any, based on the current gossip overview,
 with some probability. Otherwise Gossip to any random live node.
 
 The gossiper only sends the gossip overview to the chosen node. The recipient of
@@ -497,7 +497,7 @@ could be forwarded after a direct message to the new host ``N2``, breaking
 message ordering from a client to actor ``A``.
 
 In this situation ``N2`` can keep a buffer for messages per sending node. Each
-buffer is flushed and removed when an acknowledgement (``ack``) message has been
+buffer is flushed and removed when an acknowledgment (``ack``) message has been
 received. When each node in the cluster sees the partition update it first sends
 an ``ack`` message to the previous host node ``N1`` before beginning to use
 ``N2`` as the new host for ``A``. Any messages sent from the client node
@@ -511,7 +511,7 @@ Any subsequent messages from this sending node can be queued normally. Once all
 nodes in the cluster have acknowledged the partition change and ``N2`` has
 cleared all buffers, the handoff is complete and message ordering has been
 preserved. In practice the buffers should remain small as it is only those
-messages sent directly to ``N2`` before the acknowledgement has been forwarded
+messages sent directly to ``N2`` before the acknowledgment has been forwarded
 that will be buffered.
 
 
@@ -539,7 +539,7 @@ A more complete process for graceful handoff would be:
      a. ``N2`` simply processes messages for ``A`` as normal
 
      b. ``N2`` creates a buffer per sending node for ``A``. Each buffer is
-        opened (flushed and removed) when an acknowledgement for the sending
+        opened (flushed and removed) when an acknowledgment for the sending
         node has been received (via ``N1``)
 
 
@@ -556,12 +556,12 @@ A more complete process for graceful handoff would be:
 
   6. all nodes eventually see the new partitioning and use ``N2``
 
-     i. each node sends an acknowledgement message to ``N1``
+     i. each node sends an acknowledgment message to ``N1``
 
-     ii. when ``N1`` receives the acknowledgement it can count down the pending
-         acknowledgements and remove forwarding when complete
+     ii. when ``N1`` receives the acknowledgment it can count down the pending
+         acknowledgments and remove forwarding when complete
 
-     iii. when ``N2`` receives the acknowledgement it can open the buffer for the
+     iii. when ``N2`` receives the acknowledgment it can open the buffer for the
           sending node (if buffers are used)
 
 
